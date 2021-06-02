@@ -1,4 +1,7 @@
 <RCC>
-    <qresource prefix="QtChip8Emulator">
-    </qresource>
+  <qresource prefix="QtChip8Emulator">
+    <file>icons/file.svg</file>
+    <file>icons/debug-start.svg</file>
+    <file>icons/bug.svg</file>
+  </qresource>
 </RCC>

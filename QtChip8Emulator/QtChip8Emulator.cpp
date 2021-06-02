@@ -6,6 +6,7 @@
 #include <sstream>
 #include "Chip8Cpu.h"
 #include "DebuggerForm.h"
+#include "AboutForm.h"
 QtChip8Emulator::QtChip8Emulator(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -22,6 +23,7 @@ QtChip8Emulator::QtChip8Emulator(QWidget *parent)
     connect(cpuTimer.get(), &QTimer::timeout, this, &QtChip8Emulator::runCpu);
     connect(ui.actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(ui.actionOpenDebugger, SIGNAL(triggered()), this, SLOT(openDebugger()));
+    connect(ui.actionAbout, SIGNAL(triggered()), this, SLOT(openAbout()));
     connect(ui.actionRun, SIGNAL(triggered()), this, SLOT(run()));
     connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
     screenRefreshTimer->start(1);
@@ -29,6 +31,11 @@ QtChip8Emulator::QtChip8Emulator(QWidget *parent)
 }
 void QtChip8Emulator::quit() {
     QApplication::quit();
+}
+void QtChip8Emulator::openAbout() {
+    AboutForm* form = new AboutForm(this);
+    form->setWindowFlags(Qt::Window);
+    form->show();    
 }
 void QtChip8Emulator::openDebugger() {
     DebuggerForm* form = new DebuggerForm(this, cpu);

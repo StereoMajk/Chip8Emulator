@@ -36,9 +36,31 @@
     <addaction name="actionOpen"/>
     <addaction name="actionQuit"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -51,19 +73,34 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="QtChip8Emulator.qrc">
+     <normaloff>:/QtChip8Emulator/icons/file.svg</normaloff>:/QtChip8Emulator/icons/file.svg</iconset>
+   </property>
    <property name="text">
     <string>Open ROM</string>
    </property>
   </action>
   <action name="actionOpenDebugger">
+   <property name="icon">
+    <iconset resource="QtChip8Emulator.qrc">
+     <normaloff>:/QtChip8Emulator/icons/bug.svg</normaloff>:/QtChip8Emulator/icons/bug.svg</iconset>
+   </property>
    <property name="text">
     <string>Debugger</string>
    </property>
    <property name="toolTip">
     <string>OpeDebugger</string>
    </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="actionRun">
+   <property name="icon">
+    <iconset resource="QtChip8Emulator.qrc">
+     <normaloff>:/QtChip8Emulator/icons/debug-start.svg</normaloff>:/QtChip8Emulator/icons/debug-start.svg</iconset>
+   </property>
    <property name="text">
     <string>Run</string>
    </property>
@@ -74,6 +111,11 @@
   <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
    </property>
   </action>
  </widget>

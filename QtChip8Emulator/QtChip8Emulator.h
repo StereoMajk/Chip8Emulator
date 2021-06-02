@@ -17,6 +17,7 @@ public:
 public slots:
     void openFile();
     void openDebugger();
+    void openAbout();
     void run();
     void runCpu();
     void refreshScreen();

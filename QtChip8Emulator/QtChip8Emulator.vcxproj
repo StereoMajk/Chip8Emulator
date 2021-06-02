@@ -90,6 +90,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AboutForm.cpp" />
     <ClCompile Include="BitUtilities.cpp" />
     <ClCompile Include="Chip8Cpu.cpp" />
     <ClCompile Include="Chip8Disassembler.cpp" />
@@ -97,6 +98,7 @@
     <ClCompile Include="MemoryView.cpp" />
     <ClCompile Include="ScreenView.cpp" />
     <QtRcc Include="QtChip8Emulator.qrc" />
+    <QtUic Include="AboutForm.ui" />
     <QtUic Include="DebuggerForm.ui" />
     <QtUic Include="QtChip8Emulator.ui" />
     <QtMoc Include="QtChip8Emulator.h" />
@@ -107,12 +109,18 @@
     <QtMoc Include="ScreenView.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="AboutForm.h" />
     <ClInclude Include="BitUtilities.h" />
     <ClInclude Include="Chip8Cpu.h" />
     <ClInclude Include="Chip8Disassembler.h" />
     <ClInclude Include="DisassembledLine.h" />
     <QtMoc Include="DebuggerForm.h" />
     <QtMoc Include="MemoryView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\bug.svg" />
+    <None Include="icons\debug-start.svg" />
+    <None Include="icons\file.svg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

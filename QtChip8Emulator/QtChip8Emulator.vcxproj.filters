@@ -58,6 +58,9 @@
     <ClCompile Include="BitUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AboutForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ScreenView.h">
@@ -67,6 +70,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="DebuggerForm.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AboutForm.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -88,5 +94,13 @@
     <QtUic Include="DebuggerForm.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="AboutForm.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\bug.svg" />
+    <None Include="icons\debug-start.svg" />
+    <None Include="icons\file.svg" />
   </ItemGroup>
 </Project>

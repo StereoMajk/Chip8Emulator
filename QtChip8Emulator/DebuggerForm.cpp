@@ -21,6 +21,8 @@ DebuggerForm::DebuggerForm(QWidget *parent, std::shared_ptr<Chip8Cpu> cpu)
 	memoryViewer = new MemoryView(this);	
 	toolbar = new QToolBar(this);
 	toolbar->setMovable(true);
+	toolbar->setIconSize(QSize(16, 16));
+	toolbar->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
 	stackListView = new QListWidget(this);
 	stackListView->setMinimumHeight(50);
 	stackListView->setMinimumWidth(250);
@@ -81,7 +83,9 @@ DebuggerForm::DebuggerForm(QWidget *parent, std::shared_ptr<Chip8Cpu> cpu)
 	ui.gridLayout->addWidget(stackListView, 4, 1);
 
 	QAction* reset = toolbar->addAction("Reset");	
+	reset->setIcon(QIcon("icons/debug-restart.svg"));
 	QAction* step = toolbar->addAction("Step");
+	step->setIcon(QIcon("icons/debug-step-into.svg"));
 	connect(reset, &QAction::triggered, this, &DebuggerForm::reset);	
 	connect(step, &QAction::triggered, this, &DebuggerForm::step);
 
