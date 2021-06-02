@@ -188,7 +188,7 @@ void Chip8Cpu::ExecuteInstruction(unsigned short opcode) {
 		{
 			auto registerIndexMinuend = GetNibble(opcode, 1);
 			auto registerIndexSubtrahend = GetNibble(opcode, 2);
-			if (registers[registerIndexMinuend] > registers[registerIndexSubtrahend]) {
+			if (registers[registerIndexMinuend] >= registers[registerIndexSubtrahend]) {
 				registers[0xF] = 1;
 			}
 			auto overflowCheck = (int)registers[registerIndexMinuend] - (int)registers[registerIndexSubtrahend];
@@ -202,7 +202,7 @@ void Chip8Cpu::ExecuteInstruction(unsigned short opcode) {
 		{
 			auto registerIndexMinuend = GetNibble(opcode, 2);
 			auto registerIndexSubtrahend = GetNibble(opcode, 1);
-			if (registers[registerIndexMinuend] > registers[registerIndexSubtrahend]) {
+			if (registers[registerIndexMinuend] >= registers[registerIndexSubtrahend]) {
 				registers[0xF] = 1;
 			}
 			auto overflowCheck = (int)registers[registerIndexMinuend] - (int)registers[registerIndexSubtrahend];
