@@ -102,5 +102,12 @@
     <None Include="icons\bug.svg" />
     <None Include="icons\debug-start.svg" />
     <None Include="icons\file.svg" />
+    <None Include="icons\debug-restart.svg" />
+    <None Include="icons\debug-step-into.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="sound\square.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

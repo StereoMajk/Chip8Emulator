@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QVBoxLayout>
+#include <QtMultimedia/QSoundEffect>
 #include "ui_QtChip8Emulator.h"
 #include <QTimer>
 #include "ScreenView.h"
@@ -22,6 +23,8 @@ public slots:
     void runCpu();
     void refreshScreen();
     void quit();
+    void soundStartCallback();
+    void soundStopCallback();
 private:
     bool eventFilter(QObject* Object, QEvent* Event);
     Ui::QtChip8EmulatorClass ui;
@@ -30,4 +33,5 @@ private:
     std::shared_ptr<QTimer> cpuTimer;
     std::shared_ptr<Chip8Cpu> cpu;
     std::string currentLoadedFilename;
+    QSoundEffect* sound;
 };

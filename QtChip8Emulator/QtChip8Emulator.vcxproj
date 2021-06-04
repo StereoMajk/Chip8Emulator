@@ -32,7 +32,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>5.15.2_msvc2015_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;multimedia</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -119,8 +119,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\bug.svg" />
+    <None Include="icons\debug-restart.svg" />
     <None Include="icons\debug-start.svg" />
+    <None Include="icons\debug-step-into.svg" />
     <None Include="icons\file.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="sound\square.wav">
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -3,6 +3,10 @@
 #include <QFileDialog>
 #include <QTimer>
 #include <QKeyEvent>
+#include <QtMultimedia/QSoundEffect>
+#include <QApplication>
+#include <QDir>
+#include <functional>
 #include <sstream>
 #include "Chip8Cpu.h"
 #include "DebuggerForm.h"
@@ -13,8 +17,14 @@ QtChip8Emulator::QtChip8Emulator(QWidget *parent)
     ui.setupUi(this);        
     this->setWindowTitle("Chip-8 Emulator");
     screenImage = new ScreenView(this);
-
+    QString currentPath = QDir::currentPath();
+    auto url = QUrl::fromLocalFile("sound/square.wav");
+    sound = new QSoundEffect();
+    sound->setSource(url);
+    sound->setVolume(0.25);
+    sound->setLoopCount(QSoundEffect::Infinite);
     cpu = std::make_shared<Chip8Cpu>();
+    cpu->SetSoundCallbacks(std::bind(&QtChip8Emulator::soundStartCallback, this), std::bind(&QtChip8Emulator::soundStopCallback, this));
     screenRefreshTimer = std::make_shared<QTimer>();
     cpuTimer = std::make_shared<QTimer>();
     ui.gridLayout->addWidget(screenImage,0,0);
@@ -28,6 +38,12 @@ QtChip8Emulator::QtChip8Emulator(QWidget *parent)
     connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
     screenRefreshTimer->start(1);
     
+}
+void QtChip8Emulator::soundStartCallback() {
+    sound->play();
+}
+void QtChip8Emulator::soundStopCallback() {
+    sound->stop();
 }
 void QtChip8Emulator::quit() {
     QApplication::quit();

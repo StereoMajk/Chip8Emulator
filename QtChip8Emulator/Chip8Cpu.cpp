@@ -15,6 +15,10 @@ Chip8Cpu::Chip8Cpu(Chip8Configuration configuration) {
 Chip8Cpu::~Chip8Cpu() {
 
 }
+void Chip8Cpu::SetSoundCallbacks(std::function<void(void)> soundStartCb, std::function<void(void)> soundStopCb) {
+	soundStart = soundStartCb;
+	soundStop = soundStopCb;
+}
 void Chip8Cpu::LoadRom(std::vector<unsigned char> buffer) {
 	Reset();		
 	currentRom.assign(buffer.begin(), buffer.end());
@@ -42,6 +46,7 @@ void Chip8Cpu::Reset() {
 		key = false;
 	}
 	memset(registers, 0, sizeof(registers));
+	soundPlaying = false;
 }
 void Chip8Cpu::Run(int nr_instructions) {
 	for (int i = 0; i < nr_instructions; i++) {
@@ -406,6 +411,18 @@ void Chip8Cpu::ExecuteInstruction(unsigned short opcode) {
 	default:
 		throw new std::exception("unknown instruction");
 		break;
+	}
+	if (soundTimer > 0 && !soundPlaying) {
+		if (soundStart) {			
+			soundStart();
+			soundPlaying = true;
+		}
+	}
+	if (soundTimer == 0 && soundPlaying) {
+		if (soundStop) {			
+			soundStop();
+			soundPlaying = false;
+		}
 	}
 }
 

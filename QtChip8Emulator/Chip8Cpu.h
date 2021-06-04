@@ -1,6 +1,7 @@
 #pragma once
 #include <deque>
 #include <vector>
+#include <functional>
 static const char font[] = {
 		0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
 		0x20, 0x60, 0x20, 0x20, 0x70, // 1
@@ -38,6 +39,7 @@ public:
 	char* GetScreenBGRABuffer();
 	int GetScreenBGRABufferSize();
 	unsigned char* GetMemory();
+	void SetSoundCallbacks(std::function<void(void)> soundStartCb, std::function<void(void)> soundStopCb);
 	static const int MemorySize = 4 * 1024;
 	static const unsigned char ScreenWidth = 64;
 	static const unsigned char ScreenHeight = 32;
@@ -65,5 +67,8 @@ private:
 	std::vector<unsigned char> currentRom;
 	unsigned char delayTimer;
 	unsigned char soundTimer;
+	bool soundPlaying = false;
+	std::function<void(void)> soundStart;
+	std::function<void(void)> soundStop;
 };
 
